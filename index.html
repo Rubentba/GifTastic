@@ -17,19 +17,19 @@
 
     <body>
         
-        <div class="row">
+        <div class="row" id="rowOne">
             <!-- Contains Buttons -->
             <div id="btns"></div>
         </div>
-        <div class="row">
+        <div class="row" id="rowTwo">
             <!-- Contains form to display new buttons -->
             <form>
                 <input type="text" name="gif-input" id="gif-input">
-                <input type="submit" value="Submit" class="btn" id="submitBtn">
+                <input type="submit" value="Submit" class="btn btn-primary" id="submitBtn">
             </form>
-            <!-- Contains Gifs -->
-            <div id="gifContainer"></div>
         </div>
+        <!-- Contains Gifs -->
+        <div id="gifContainer"></div>
 
 
         <!-- Linking jQuery -->
@@ -37,6 +37,6 @@
         <!-- Linking AJAX JS-->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>      
         <!-- Linking App JS -->
-        <script src='assets/javascript/app.js'></script>
+        <script src="assets/javascript/app.js"></script>
     </body>
 </html>
