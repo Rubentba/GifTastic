@@ -9,41 +9,61 @@ function displayGameGifs() {
         url: queryURL,
         method: 'GET'
     }).then(function(response) {
-        $('button').on('click', function() {
-            var results = response.data
+        var results = response.data
 
-            for (var i = 0; i < results.length; i++) {
+        for (var i = 0; i < results.length; i++) {
 
-            var gameDiv = $('<div>')
-                          .append(p)
-                          .append(gameImage),
-                p = $('<p>').text('Rating: ' + results[i].rating),
-                gameImage = $('<img>')
-                            .attr('data-state', 'still')
-                            .attr('src', results[i].images.fixed_height_still.url)
-                            .attr('data-animate', results[i].images.fixed_height.url)
-                            .attr('data-still', results[i].images.fixed_height_still.url)
-                            .addClass('gifImage')
-
-            $('#gifContainer').prepend(gameDiv)
-            }
-
-            $('.gifImage').on('click', function() {
-
-                var state = $('.gifImage').attr('data-state');
-
-                if (state === 'still') {
-                  $(this).attr('src', $(this).attr('data-animate'));
-                  $(this).attr('data-state', 'animate');
-                } else {
-                  $(this).attr('src', $(this).attr('data-still'));
-                  $(this).attr('data-state', 'still');
-                }
-                console.log(this)
-            });
-        })
+        var gameDiv = $('<div>')
+                      .append(p)
+                      .append(gameImage),
+            p = $('<p>').text('Rating: ' + results[i].rating),
+            gameImage = $('<img>')
+                        .attr('data-state', 'still')
+                        .attr('src', results[i].images.fixed_height_still.url)
+                        .attr('data-animate', results[i].images.fixed_height.url)
+                        .attr('data-still', results[i].images.fixed_height_still.url)
+                        .addClass('gifImage')
+             $('#gifContainer').prepend(gameDiv)
+        }
     })
 }
+
+        // $('button').on('click', function() {
+        //     var results = response.data
+
+        //     for (var i = 0; i < results.length; i++) {
+
+        //     var gameDiv = $('<div>')
+        //                   .append(p)
+        //                   .append(gameImage),
+        //         p = $('<p>').text('Rating: ' + results[i].rating),
+        //         gameImage = $('<img>')
+        //                     .attr('data-state', 'still')
+        //                     .attr('src', results[i].images.fixed_height_still.url)
+        //                     .attr('data-animate', results[i].images.fixed_height.url)
+        //                     .attr('data-still', results[i].images.fixed_height_still.url)
+        //                     .addClass('gifImage')
+        //          $('#gifContainer').prepend(gameDiv)
+        //     }
+        // })
+
+       
+        
+
+        $(document).on('click', '.gifImage', function() {
+
+            var state = $(this).attr('data-state');
+
+            if (state === 'still') {
+                $(this).attr('src', $(this).attr('data-animate'));
+                $(this).attr('data-state', 'animate');
+            } else {
+                $(this).attr('src', $(this).attr('data-still'));
+                $(this).attr('data-state', 'still');
+            }
+            console.log(this)
+        });
+
 
 function generateButtons() {
 
